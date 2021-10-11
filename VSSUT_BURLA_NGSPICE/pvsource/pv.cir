@@ -1,0 +1,11 @@
+* simulation of pv.cir
+* .option reltol=0.01 abstol=0.001 vntol=0.001
+.tran  0.01ms 5ms    uic
+.include pv.net
+
+.control
+set color0 = white    	; set background as white     
+set color1 = black	; set foreground as black
+run
+plot i(vse) vs v(nv) v(nv)*i(vse)/40 vs v(nv)
+.endc

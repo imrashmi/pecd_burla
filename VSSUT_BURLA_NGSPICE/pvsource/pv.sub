@@ -1,0 +1,27 @@
+* LIBRARY OF MY CUSTOM COMPONENTS
+* Department: DESE, Indian Institute of Science, Bangalore
+
+***************************************************************
+* Diodes
+***************************************************************
+.model Def D()
+****************************************************************
+*
+*-----------------------------------------------------------------
+* PV SOURCE
+*-----------------------------------------------------------------
+* connections:   +ve terminal
+*                | -ve terminal
+*                | | 
+.SUBCKT PVSOURCE 1 2 Isc=1 Vscale=50
+*Setting Isc value
+VIsc nsc 0 {Isc}
+*Setting No. of devices in series 
+Vnum ndev 0 {Vscale}
+*Using PV model eqn. in B-source
+*(nVT)=0.05 -- n=2 and VT=0.025
+*a conditional statement is used. If current flow is negative i.e. PV as sink, then the 
+*current should get limited to 0 and not allow sink current into PV
+Bpv 1 2 i=-(v(nsc)- 1e-7*(exp(v(1,2)/0.05/v(ndev))-1)>0 ? (v(nsc)- 1e-7*(exp(v(1,2)/0.05/v(ndev))-1)) : 0)
+.ENDS
+*--------------------------------------------------------------------------------

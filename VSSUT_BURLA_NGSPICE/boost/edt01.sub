@@ -1,0 +1,38 @@
+* LIBRARY OF MY CUSTOM COMPONENTS
+* Department: DESE, Indian Institute of Science, Bangalore
+
+***************************************************************
+* Diodes
+***************************************************************
+.model Def D()
+****************************************************************
+*Diode macro model
+.SUBCKT diode_power 101 102
+DX 101 102 def_power_diode
+Rsh 102 103 10000
+Csh 103 101 0.01uF
+.model def_power_diode D(RS=0.01, CJO=100pF)
+.ENDS
+*
+*-------------------------------------------------
+.model switch SW( RON=0.001 )
+*$
+*-------------------------------------------------
+.SUBCKT  power_sw  nSp  nSn  nVcp 
+SW      nSp  nDb  nVcp  0  bidir_sw
+Dblock  nDb  nSn  d_switch
+Dbody   nSn  nSp  d_switch
+.model  bidir_sw  SW( RON=0.001 )
+.model  d_switch  D()
+.ENDS
+*
+*-----------------------------------------------------------------------------
+.SUBCKT PWMtri nPin nPout fs=10000
+atri nPin nPtri triout
+.model triout triangle(cntl_array=[0 1] freq_array=[{fs} {fs}] out_low = -1.0 out_high = 1.0 duty_cycle = 0.5)
+acompare [nPin nPtri] ncout comp_sum
+.model comp_sum summer(in_gain=[1.0 -1.0])
+alim ncout nPout limit_comp
+.model limit_comp limit(gain=1e6 out_lower_limit=0.0 out_upper_limit=1.0 fraction=FALSE)
+.ENDS
+*
