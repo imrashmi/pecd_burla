@@ -1,0 +1,153 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# 0-1_myComps
+#
+DEF 0-1_myComps #GND 0 0 N N 1 F N
+F0 "#GND" 0 -250 50 H I C CNN
+F1 "0-1_myComps" 0 -150 50 H I C CNN
+F2 "" -200 100 50 V I C CNN
+F3 "" -250 300 50 H I C CNN
+DRAW
+P 2 0 1 0 0 0 0 100 N
+P 4 0 1 0 0 -50 -50 0 50 0 0 -50 N
+X 0 1 0 100 0 D 40 40 1 1 W N
+ENDDRAW
+ENDDEF
+#
+# C1-1_myComps
+#
+DEF C1-1_myComps C 0 0 N N 1 F N
+F0 "C" 200 50 50 H V C CNN
+F1 "C1-1_myComps" 200 -50 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 -150 50 H I C CNN
+DRAW
+A 0 -150 141 1350 450 0 1 0 N -100 -50 100 -50
+P 2 0 1 0 -100 50 100 50 N
+P 2 0 1 0 0 -50 0 -10 N
+X T1 1 0 150 100 D 50 50 1 1 P
+X T2 2 0 -150 100 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Esource-1_myComps
+#
+DEF Esource-1_myComps V 0 0 N N 1 F N
+F0 "V" 0 0 50 H V C CNN
+F1 "Esource-1_myComps" 200 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 -450 50 H I C CNN
+DRAW
+C 0 0 100 0 0 0 N
+T 0 -50 150 50 0 0 0 + Normal 0 C C
+X T1 1 0 200 100 D 50 50 1 1 P
+X T2 2 0 -200 100 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# L1-1_myComps
+#
+DEF L1-1_myComps L 0 0 N N 1 F N
+F0 "L" 0 -100 50 H V C CNN
+F1 "L1-1_myComps" 0 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 -150 50 H I C CNN
+DRAW
+A -100 0 50 1 1799 0 1 0 N -50 0 -150 0
+A 0 0 50 1 1799 1 1 0 N 50 0 -50 0
+A 100 0 50 1 1799 1 1 0 N 150 0 50 0
+X T1 1 -250 0 100 R 50 50 1 1 P
+X T2 2 250 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# PWM_1ph-1_myBlocks
+#
+DEF PWM_1ph-1_myBlocks PWM 0 40 N N 1 F N
+F0 "PWM" 0 -200 50 H V C CNN
+F1 "PWM_1ph-1_myBlocks" 0 0 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+F4 "X" 50 -350 50 H I C CNN "Spice_Primitive"
+F5 "PWM_1ph fs=10k" 350 -550 50 H I C CNN "Spice_Model"
+F6 "Y" 50 -450 50 H I C CNN "Spice_Netlist_Enabled"
+F7 "models/luBlocks.lib" 400 -650 50 H I C CNN "Spice_Lib_File"
+DRAW
+P 2 0 1 0 -250 0 -200 0 N
+P 2 0 1 0 230 0 250 0 N
+P 3 0 1 0 -230 20 -200 0 -230 -20 N
+P 3 0 1 0 200 20 230 0 200 -20 N
+P 5 0 1 0 -200 150 200 150 200 -150 -200 -150 -200 150 N
+X Tin 1 -350 0 100 R 50 50 1 1 P
+X Tout 2 350 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# R1-1_myComps
+#
+DEF R1-1_myComps R 0 0 N N 1 F N
+F0 "R" 0 -150 50 H V C CNN
+F1 "R1-1_myComps" 0 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 -150 50 H I C CNN
+DRAW
+S -150 50 150 -50 0 1 0 N
+X T1 1 -250 0 100 R 50 50 1 1 P
+X T2 2 250 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# diode_pwr-1_myComps
+#
+DEF diode_pwr-1_myComps D 0 0 N N 1 F N
+F0 "D" 0 -150 50 H V C CNN
+F1 "diode_pwr-1_myComps" 0 150 50 H I C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+F4 "X" 50 -300 50 H I C CNN "Spice_Primitive"
+F5 "diode_pwr" 200 -500 50 H I C CNN "Spice_Model"
+F6 "Y" 50 -400 50 H I C CNN "Spice_Netlist_Enabled"
+F7 "models/luDevices.lib" 450 -600 50 H I C CNN "Spice_Lib_File"
+DRAW
+P 2 0 1 12 100 100 100 -100 N
+P 4 0 1 12 -50 100 -50 -100 100 0 -50 100 N
+X AN 1 -150 0 100 R 50 50 1 1 P
+X KA 2 200 0 100 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# switch_pwr-1_myComps
+#
+DEF switch_pwr-1_myComps S 0 0 N N 1 F N
+F0 "S" 250 0 50 H V C CNN
+F1 "switch_pwr-1_myComps" 400 -100 50 H I C CNN
+F2 "" 50 -100 50 H I C CNN
+F3 "" 150 0 50 H I C CNN
+F4 "X" 50 -550 50 H I C CNN "Spice_Primitive"
+F5 "switch_pwr" 250 -750 50 H I C CNN "Spice_Model"
+F6 "Y" 50 -650 50 H I C CNN "Spice_Netlist_Enabled"
+F7 "models/luDevices.lib" 500 -900 50 H I C CNN "Spice_Lib_File"
+DRAW
+T 0 -300 50 50 0 0 0 + Normal 0 C C
+T 0 -300 -150 50 0 0 0 - Normal 0 C C
+S -200 -150 -250 150 0 1 0 N
+P 2 0 1 0 -150 0 -200 0 N
+P 2 0 1 0 -150 100 -150 -100 N
+P 2 0 1 0 0 -100 0 -150 N
+P 2 0 1 0 0 100 0 150 N
+P 2 0 1 0 50 50 150 50 N
+P 3 0 1 0 -100 100 -100 -50 -100 -100 N
+P 3 0 1 0 -50 -100 0 -100 0 -50 N
+P 3 0 1 0 0 100 -100 0 0 -100 N
+P 3 0 1 0 100 -50 100 -150 0 -150 N
+P 3 0 1 0 100 50 100 150 0 150 N
+P 4 0 1 0 50 -50 150 -50 100 50 50 -50 N
+X C 1 0 250 100 D 50 50 1 1 P
+X E 2 0 -250 100 U 50 50 1 1 P
+X B+ 3 -350 0 100 R 50 50 1 1 P
+X B- 4 -350 -100 100 R 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+#End Library

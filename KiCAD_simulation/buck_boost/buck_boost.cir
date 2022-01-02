@@ -1,0 +1,20 @@
+.title KiCad schematic
+.include "models/luBlocks.lib"
+.include "models/luDevices.lib"
+RL1 0 o 100
+C1 o 0 100uF
+V1 a 0 12V
+L1 d 0 10mH
+XD1 o d diode_pwr
+XS1 a d g 0 switch_pwr
+V2 Net-_PWM1-Pad1_ 0 0.5
+XPWM1 Net-_PWM1-Pad1_ g PWM_1ph fs=10k
+.control
+option reltol=0.01 abstol=0.01 vntol=0.01
+tran 1us 100ms uic
+run
+set color0 = white         ; set background color to white
+set color1 = black         ; set foreground color to black
+plot v(d) v(o) i(L1)
+.endc
+.end
