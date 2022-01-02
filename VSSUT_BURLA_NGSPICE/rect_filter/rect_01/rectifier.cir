@@ -1,4 +1,0 @@
-*
-.tran 50us 100ms uic
-.include rectifier.net
-
